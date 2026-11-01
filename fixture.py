@@ -11,16 +11,14 @@ INVENTORY_URL = "https://www.saucedemo.com/inventory.html"
 def login(page: Page):
 
     def _login(username):
-
         page.goto(BASE_URL)
-
         page.get_by_role("textbox", name="Username").fill(username)
-
         page.get_by_placeholder("Password").fill("secret_sauce")
-
         page.get_by_role("button", name="Login").click()
 
-    return _login
+        return page
+
+    yield _login
 
 
 class TestLogin:
